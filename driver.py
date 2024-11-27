@@ -46,7 +46,6 @@ def add_arguments(parser):
 def main(args):
     usage_plot = args.usage_plot # filename of the usage plot
     weblogo_query = args.weblogo_query # filename of the query for generating weblogo
-    num_threads = args.num_threads # number of threads to use for the computation
     igblast_result_path = args.igblast  # path to NCBI igBLAST analysis result
     if args.cache == 'y':
         use_cache = True
@@ -63,17 +62,13 @@ def main(args):
     ClonalLineage = lineage_analysis.get_clonal_lineages(HammingGraph=HammingGraph)
 
     # report usage stats
-    UsageStats = lineage_analysis.get_usage_stats(igblast_result=igblast_result,
-                                                  HammingGraph=HammingGraph,
-                                                  use_cache=use_cache)
+    UsageStats = lineage_analysis.get_usage_stats(igblast_result=igblast_result, HammingGraph=HammingGraph, use_cache=use_cache)
     
     # Plot the graph of usage statistics
     utils.plot_usage_stats(usage_data=UsageStats, plot=True, filename=usage_plot)
     
     # Generate a list of Amino-acid sequences of CDR3s from the largest clonal lineage
-    AminoAcidSeqs = lineage_analysis.get_aaseq_from_lcl(igblast_result=igblast_result,
-                                                        ClonalLineage=ClonalLineage,
-                                                        filename=weblogo_query)
+    AminoAcidSeqs = lineage_analysis.get_aaseq_from_lcl(igblast_result=igblast_result, ClonalLineage=ClonalLineage, filename=weblogo_query)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(

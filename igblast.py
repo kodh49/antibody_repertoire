@@ -1,5 +1,4 @@
 import pandas as pd
-import dask.dataframe as dd
 from loguru import logger
 import os
 
@@ -34,7 +33,7 @@ def igblast_preprocess(filepath='data/igblast_results.tsv'):
     try:
         # Load the file and select only the relevant columns
         logger.info(f"Loading file: {filepath}")
-        df = dd.read_csv(filepath, sep='\t', usecols=assorted_columns)
+        df = pd.read_csv(filepath, sep='\t', usecols=assorted_columns)
     except Exception as e:
         logger.error(f"Failed to load file '{filepath}': {e}")
         raise
@@ -50,7 +49,7 @@ def igblast_preprocess(filepath='data/igblast_results.tsv'):
         df['cdr_length'] = df['cdr3_end'] - df['cdr3_start'] + 1
 
         # Drop unnecessary columns
-        df = df.drop(columns=['cdr3_start', 'cdr3_end'])
+        df.drop(columns=['cdr3_start', 'cdr3_end'], inplace=True)
 
         # Convert comma-separated genes into sets
         logger.info("Converting comma-separated gene calls into sets.")

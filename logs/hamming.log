@@ -159,3 +159,163 @@ Traceback:
 2024-11-26T23:57:24.165051-0500 Converting comma-separated gene calls into sets.
 2024-11-26T23:57:24.173034-0500 Preprocessing completed successfully.
 2024-11-26T23:57:24.173303-0500 Initializing Hamming graph computation...
+2024-11-27T00:29:41.396868-0500 Starting IgBLAST preprocessing.
+2024-11-27T00:29:41.398689-0500 Loading file: data/igblast_results.tsv
+2024-11-27T00:29:41.416834-0500 Normalizing gene calls by removing alleles.
+2024-11-27T00:29:41.421415-0500 Computing CDR3 region lengths.
+2024-11-27T00:29:41.423518-0500 Converting comma-separated gene calls into sets.
+2024-11-27T00:29:41.432064-0500 Preprocessing completed successfully.
+2024-11-27T00:29:41.432328-0500 Initializing Hamming graph computation...
+2024-11-27T00:29:41.443188-0500 Hamming graph successfully saved to cache.
+2024-11-27T00:29:41.443503-0500 Hamming graph computation completed.
+2024-11-27T00:31:56.004247-0500 Starting IgBLAST preprocessing.
+2024-11-27T00:31:56.004560-0500 Loading file: data/igblast_results.tsv
+2024-11-27T00:31:56.013944-0500 Normalizing gene calls by removing alleles.
+2024-11-27T00:31:56.016999-0500 Computing CDR3 region lengths.
+2024-11-27T00:31:56.018657-0500 Converting comma-separated gene calls into sets.
+2024-11-27T00:31:56.025760-0500 Preprocessing completed successfully.
+2024-11-27T00:31:56.026040-0500 Initializing Hamming graph computation...
+2024-11-27T00:32:54.872950-0500 Starting IgBLAST preprocessing.
+2024-11-27T00:32:54.873273-0500 Loading file: data/igblast_results.tsv
+2024-11-27T00:32:55.036387-0500 Normalizing gene calls by removing alleles.
+2024-11-27T00:32:55.051022-0500 Computing CDR3 region lengths.
+2024-11-27T00:32:55.053500-0500 Converting comma-separated gene calls into sets.
+2024-11-27T00:32:55.111042-0500 Preprocessing completed successfully.
+2024-11-27T00:32:55.111376-0500 Initializing Hamming graph computation...
+2024-11-27T00:33:48.062354-0500 Hamming graph successfully saved to cache.
+2024-11-27T00:33:48.063077-0500 Hamming graph computation completed.
+2024-11-27T00:40:29.732618-0500 Starting IgBLAST preprocessing.
+2024-11-27T00:40:29.732955-0500 Loading file: data/igblast_results.tsv
+2024-11-27T00:40:29.847373-0500 Normalizing gene calls by removing alleles.
+2024-11-27T00:40:29.862237-0500 Computing CDR3 region lengths.
+2024-11-27T00:40:29.864337-0500 Converting comma-separated gene calls into sets.
+2024-11-27T00:40:29.921282-0500 Preprocessing completed successfully.
+2024-11-27T00:40:29.921592-0500 Initializing Hamming graph computation...
+2024-11-27T00:41:45.830043-0500 Starting IgBLAST preprocessing.
+2024-11-27T00:41:45.830346-0500 Loading file: data/igblast_results.tsv
+2024-11-27T00:41:45.950110-0500 Normalizing gene calls by removing alleles.
+2024-11-27T00:41:45.963505-0500 Computing CDR3 region lengths.
+2024-11-27T00:41:45.965514-0500 Converting comma-separated gene calls into sets.
+2024-11-27T00:41:46.021774-0500 Preprocessing completed successfully.
+2024-11-27T00:41:46.022109-0500 Initializing Hamming graph computation...
+2024-11-27T00:43:33.561023-0500 Hamming graph successfully saved to cache.
+2024-11-27T00:43:33.561585-0500 Hamming graph computation completed.
+2024-11-27T00:50:45.437330-0500 Starting IgBLAST preprocessing.
+2024-11-27T00:50:45.437725-0500 Loading file: data/igblast_results.tsv
+2024-11-27T00:50:45.564070-0500 Normalizing gene calls by removing alleles.
+2024-11-27T00:50:45.577871-0500 Computing CDR3 region lengths.
+2024-11-27T00:50:45.579860-0500 Converting comma-separated gene calls into sets.
+2024-11-27T00:50:45.638817-0500 Preprocessing completed successfully.
+2024-11-27T00:50:45.639172-0500 Initializing Hamming graph computation...
+2024-11-27T00:50:45.639379-0500 filter out for edges through inner join.
+2024-11-27T00:50:49.653128-0500 compute hamming distance
+2024-11-27T00:52:01.704022-0500 Starting IgBLAST preprocessing.
+2024-11-27T00:52:01.704384-0500 Loading file: data/igblast_results.tsv
+2024-11-27T00:52:01.836732-0500 Normalizing gene calls by removing alleles.
+2024-11-27T00:52:01.852980-0500 Computing CDR3 region lengths.
+2024-11-27T00:52:01.855044-0500 Converting comma-separated gene calls into sets.
+2024-11-27T00:52:01.925045-0500 Preprocessing completed successfully.
+2024-11-27T00:52:01.925459-0500 Initializing Hamming graph computation...
+2024-11-27T00:52:01.925753-0500 filter out for edges through inner join.
+2024-11-27T00:52:05.996697-0500 compute J gene intersection.
+2024-11-27T00:53:04.762654-0500 filtering based on J gene intersection
+2024-11-27T00:53:06.016284-0500 compute the V gene intersection.
+2024-11-27T00:53:40.433821-0500 filtering based on V gene intersection
+2024-11-27T00:53:40.820024-0500 compute hamming distance
+2024-11-27T00:53:58.696973-0500 filtering based on hamming distance.
+2024-11-27T00:53:58.845427-0500 Hamming graph successfully saved to cache.
+2024-11-27T00:53:58.846264-0500 Hamming graph computation completed.
+2024-11-27T00:56:27.458401-0500 Starting IgBLAST preprocessing.
+2024-11-27T00:56:27.458771-0500 Loading file: data/igblast_results.tsv
+2024-11-27T00:56:27.584457-0500 Normalizing gene calls by removing alleles.
+2024-11-27T00:56:27.598735-0500 Computing CDR3 region lengths.
+2024-11-27T00:56:27.600825-0500 Converting comma-separated gene calls into sets.
+2024-11-27T00:56:27.661027-0500 Preprocessing completed successfully.
+2024-11-27T00:56:27.661346-0500 Initializing Hamming graph computation...
+2024-11-27T00:56:27.661546-0500 Total sequence pairs to process: 15
+2024-11-27T00:57:17.852475-0500 Starting IgBLAST preprocessing.
+2024-11-27T00:57:17.852896-0500 Loading file: data/igblast_results.tsv
+2024-11-27T00:57:17.979674-0500 Normalizing gene calls by removing alleles.
+2024-11-27T00:57:17.993210-0500 Computing CDR3 region lengths.
+2024-11-27T00:57:17.994995-0500 Converting comma-separated gene calls into sets.
+2024-11-27T00:57:18.051466-0500 Preprocessing completed successfully.
+2024-11-27T00:57:18.051845-0500 Initializing Hamming graph computation...
+2024-11-27T00:57:18.080346-0500 Total sequence pairs to process: 15
+2024-11-27T00:58:12.612955-0500 Starting IgBLAST preprocessing.
+2024-11-27T00:58:12.613318-0500 Loading file: data/igblast_results.tsv
+2024-11-27T00:58:12.764113-0500 Normalizing gene calls by removing alleles.
+2024-11-27T00:58:12.787984-0500 Computing CDR3 region lengths.
+2024-11-27T00:58:12.790730-0500 Converting comma-separated gene calls into sets.
+2024-11-27T00:58:12.878026-0500 Preprocessing completed successfully.
+2024-11-27T00:58:12.878966-0500 Initializing Hamming graph computation...
+2024-11-27T00:58:12.918316-0500 Total sequence pairs to process: 15
+2024-11-27T00:58:57.110462-0500 Starting IgBLAST preprocessing.
+2024-11-27T00:58:57.110790-0500 Loading file: data/igblast_results.tsv
+2024-11-27T00:58:57.223759-0500 Normalizing gene calls by removing alleles.
+2024-11-27T00:58:57.237817-0500 Computing CDR3 region lengths.
+2024-11-27T00:58:57.239849-0500 Converting comma-separated gene calls into sets.
+2024-11-27T00:58:57.296092-0500 Preprocessing completed successfully.
+2024-11-27T00:58:57.296430-0500 Initializing Hamming graph computation...
+2024-11-27T00:58:57.404580-0500 Total sequence pairs to process: 15
+2024-11-27T01:00:47.895153-0500 Starting IgBLAST preprocessing.
+2024-11-27T01:00:47.895492-0500 Loading file: data/igblast_results.tsv
+2024-11-27T01:00:48.008305-0500 Normalizing gene calls by removing alleles.
+2024-11-27T01:00:48.023343-0500 Computing CDR3 region lengths.
+2024-11-27T01:00:48.025429-0500 Converting comma-separated gene calls into sets.
+2024-11-27T01:00:48.090022-0500 Preprocessing completed successfully.
+2024-11-27T01:00:48.090370-0500 Initializing Hamming graph computation...
+2024-11-27T01:00:48.109632-0500 Total sequence pairs to process: 15
+2024-11-27T01:02:58.596068-0500 Starting IgBLAST preprocessing.
+2024-11-27T01:02:58.596417-0500 Loading file: data/igblast_results.tsv
+2024-11-27T01:02:58.706742-0500 Normalizing gene calls by removing alleles.
+2024-11-27T01:02:58.721689-0500 Computing CDR3 region lengths.
+2024-11-27T01:02:58.723655-0500 Converting comma-separated gene calls into sets.
+2024-11-27T01:02:58.784000-0500 Preprocessing completed successfully.
+2024-11-27T01:02:58.784344-0500 Initializing Hamming graph computation...
+2024-11-27T01:03:03.936806-0500 Total sequence pairs to process: 49995000
+2024-11-27T01:04:29.169683-0500 Hamming graph successfully saved to cache.
+2024-11-27T01:04:29.170135-0500 Hamming graph computation completed.
+2024-11-27T01:15:31.060920-0500 Starting IgBLAST preprocessing.
+2024-11-27T01:15:31.062728-0500 Loading file: data/igblast_results.tsv
+2024-11-27T01:15:31.234836-0500 Normalizing gene calls by removing alleles.
+2024-11-27T01:15:31.248496-0500 Computing CDR3 region lengths.
+2024-11-27T01:15:31.254344-0500 Converting comma-separated gene calls into sets.
+2024-11-27T01:15:31.311729-0500 Preprocessing completed successfully.
+2024-11-27T01:15:31.312093-0500 Initializing Hamming graph computation...
+2024-11-27T01:15:37.277458-0500 Total sequence pairs to process: 49995000
+2024-11-27T01:16:58.310127-0500 Hamming graph successfully saved to cache.
+2024-11-27T01:16:58.310892-0500 Hamming graph computation completed.
+2024-11-27T01:16:59.510201-0500 Extracting clonal lineages from the Hamming graph.
+2024-11-27T01:16:59.514294-0500 Identified 623 clonal lineages.
+2024-11-27T01:16:59.514774-0500 Computing usage statistics for V genes.
+2024-11-27T01:16:59.515049-0500 Mapping nodes to their respective clonal lineages.
+2024-11-27T01:16:59.520278-0500 Counting V gene usage.
+2024-11-27T01:16:59.524209-0500 Caching usage statistics.
+2024-11-27T01:16:59.526400-0500 Cached usage statistics.
+2024-11-27T01:16:59.526810-0500 Starting to plot usage statistics.
+2024-11-27T01:17:00.036286-0500 Displaying the plot interactively.
+2024-11-27T01:17:02.535882-0500 Plot saved to file: plots/usage_plot.png
+2024-11-27T01:17:02.564563-0500 Plotting completed successfully.
+2024-11-27T01:17:02.565008-0500 Extracting amino acid sequences from the largest clonal lineage.
+2024-11-27T01:17:02.581445-0500 Amino acid sequences saved to weblogo_query.txt in the data directory.
+2024-11-27T01:17:29.654569-0500 Starting IgBLAST preprocessing.
+2024-11-27T01:17:29.654945-0500 Loading file: data/igblast_results.tsv
+2024-11-27T01:17:29.839562-0500 Normalizing gene calls by removing alleles.
+2024-11-27T01:17:29.867897-0500 Computing CDR3 region lengths.
+2024-11-27T01:17:29.870448-0500 Converting comma-separated gene calls into sets.
+2024-11-27T01:17:29.954272-0500 Preprocessing completed successfully.
+2024-11-27T01:17:29.954666-0500 Initializing Hamming graph computation...
+2024-11-27T01:19:01.405669-0500 Starting IgBLAST preprocessing.
+2024-11-27T01:19:01.406010-0500 Loading file: data/igblast_results.tsv
+2024-11-27T01:19:01.518918-0500 Normalizing gene calls by removing alleles.
+2024-11-27T01:19:01.534405-0500 Computing CDR3 region lengths.
+2024-11-27T01:19:01.536584-0500 Converting comma-separated gene calls into sets.
+2024-11-27T01:19:01.602589-0500 Preprocessing completed successfully.
+2024-11-27T01:19:01.603053-0500 Initializing Hamming graph computation...
+2024-11-27T01:21:03.378024-0500 Starting IgBLAST preprocessing.
+2024-11-27T01:21:03.378362-0500 Loading file: data/igblast_results.tsv
+2024-11-27T01:21:03.499572-0500 Normalizing gene calls by removing alleles.
+2024-11-27T01:21:03.515060-0500 Computing CDR3 region lengths.
+2024-11-27T01:21:03.517225-0500 Converting comma-separated gene calls into sets.
+2024-11-27T01:21:03.579486-0500 Preprocessing completed successfully.
+2024-11-27T01:21:03.579823-0500 Initializing Hamming graph computation...

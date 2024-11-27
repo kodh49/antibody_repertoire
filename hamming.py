@@ -6,7 +6,7 @@ import os
 from loguru import logger
 
 # Configure loguru to log to both stdout and a file
-logger.add("logs/hamming.log", format="{time} {message}", rotation="10 MB", backtrace=True, diagnose=True)
+logger.add("logs/hamming.log", format="{time} {message}", rotation="10 MB", retention="10 days", backtrace=True, diagnose=True, level="INFO")
 
 def hamming_distance(str1, str2):
     """
@@ -20,22 +20,6 @@ def hamming_distance(str1, str2):
         int: The Hamming distance (number of differing characters).
     """
     return sum(symb1 != symb2 for symb1, symb2 in zip(str1, str2))
-
-def process_pairs(vdj_seq_pair, igblast_result):
-    # Retrieve sequence data for the current pair
-    seq_a = igblast_result[vdj_seq_pair[0]]
-    seq_b = igblast_result[vdj_seq_pair[1]]
-
-    # Ensure both sequences have the same CDR3 length
-    if (seq_a['cdr_length'] == seq_b['cdr_length']):
-        hamming_dist = hamming_distance(seq_a['cdr3'], seq_b['cdr3'])
-        # Ensure Hamming distance is below 10% of the CDR3 length
-        if hamming_dist <= 0.1 * seq_a['cdr_length']:
-            if (len(seq_a['v_call'].intersection(seq_b['v_call'])) > 0) and (len(seq_a['j_call'].intersection(seq_b['j_call'])) > 0):
-                # Add an edge between the nodes if all conditions are met
-                return [(seq_a['cdr3'], seq_b['cdr3'])]
-    return []
-
 
 def init(igblast_result, use_cache: bool = False):
     """
@@ -77,10 +61,9 @@ def init(igblast_result, use_cache: bool = False):
 
     logger.info("Initializing Hamming graph computation...")
 
-    igblast_result_dict = igblast_result.to_dict('index')
-
     # Initialize an empty graph
     HammingGraph = nx.Graph()
+    igblast_result = igblast_result.to_dict('index')
 
     # Generate all unique pairs of VDJ sequences
     vdj_seq_pairs = list(combinations(igblast_result.keys(), 2))
@@ -89,9 +72,33 @@ def init(igblast_result, use_cache: bool = False):
     # Loop over each pair of sequences
     for i in trange(len(vdj_seq_pairs), desc="Processing sequence pairs"):
         vdj_seq_pair = vdj_seq_pairs[i]
-        edge = process_pairs(vdj_seq_pair=vdj_seq_pair)
-        # Add an edge between the nodes if all conditions are met
-        HammingGraph.add_edges_from(edge)
+
+        # Retrieve sequence data for the current pair
+        seq_a = igblast_result[vdj_seq_pair[0]]
+        seq_b = igblast_result[vdj_seq_pair[1]]
+
+        # Add nodes for the CDR3 sequences to the graph
+        HammingGraph.add_node(seq_a['cdr3'])
+        HammingGraph.add_node(seq_b['cdr3'])
+
+        # Check conditions for adding an edge between these nodes
+        try:
+            # (1) Ensure both sequences have the same CDR3 length
+            assert seq_a['cdr_length'] == seq_b['cdr_length'], "CDR3 lengths differ"
+
+            # (2) Ensure Hamming distance is below 10% of the CDR3 length
+            hamming_dist = hamming_distance(seq_a['cdr3'], seq_b['cdr3'])
+            assert hamming_dist <= 0.1 * seq_a['cdr_length'], f"Hamming distance {hamming_dist} exceeds threshold"
+
+            # (3) Ensure sequences have identical V and J genes (ignoring alleles)
+            assert len(seq_a['v_call'].intersection(seq_b['v_call'])) > 0, "No common V genes"
+            assert len(seq_a['j_call'].intersection(seq_b['j_call'])) > 0, "No common J genes"
+
+            # Add an edge between the nodes if all conditions are met
+            HammingGraph.add_edge(seq_a['cdr3'], seq_b['cdr3'])
+
+        except AssertionError as e:
+            continue
 
     # Save the computed graph to cache
     os.makedirs("cache", exist_ok=True)

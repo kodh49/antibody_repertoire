@@ -17,22 +17,22 @@ def add_arguments(parser):
         required=True,
     )
     parser.add_argument(
+        "--igblast",
+        type=str,
+        help="Path to the NCBI igBLAST analysis result tsv file.",
+        required=True,
+    )
+    parser.add_argument(
         "--usage_plot",
         type=str,
         help="Filename of the V gene usage plot.",
-        required=True,
+        required=False,
     )
     parser.add_argument(
         "--weblogo_query",
         type=str,
         help="Filename of the query for generating weblogo plot.",
-        required=True,
-    )
-    parser.add_argument(
-        "--igblast",
-        type=str,
-        help="Path to the NCBI igBLAST analysis result tsv file.",
-        required=True,
+        required=False,
     )
     parser.add_argument(
         "--num_threads",
@@ -54,17 +54,16 @@ def main(args):
         use_cache = False
 
     # preprocess the igblast result
-    igblast_result_dataframe = igblast.igblast_preprocess(to_dict=False, filepath=igblast_result_path)
-    igblast_result_dict = igblast.igblast_preprocess(to_dict=True, filepath=igblast_result_path)
+    igblast_result = igblast.igblast_preprocess(filepath=igblast_result_path)
 
     # create Hamming graph from the igblast result
-    HammingGraph = hamming.init(igblast_result=igblast_result_dict, use_cache=use_cache)
+    HammingGraph = hamming.init(igblast_result=igblast_result, use_cache=use_cache)
 
     # report clonal lineage
     ClonalLineage = lineage_analysis.get_clonal_lineages(HammingGraph=HammingGraph)
 
     # report usage stats
-    UsageStats = lineage_analysis.get_usage_stats(igblast_result=igblast_result_dataframe,
+    UsageStats = lineage_analysis.get_usage_stats(igblast_result=igblast_result,
                                                   HammingGraph=HammingGraph,
                                                   use_cache=use_cache)
     
@@ -72,7 +71,7 @@ def main(args):
     utils.plot_usage_stats(usage_data=UsageStats, plot=True, filename=usage_plot)
     
     # Generate a list of Amino-acid sequences of CDR3s from the largest clonal lineage
-    AminoAcidSeqs = lineage_analysis.get_aaseq_from_lcl(igblast_result=igblast_result_dataframe,
+    AminoAcidSeqs = lineage_analysis.get_aaseq_from_lcl(igblast_result=igblast_result,
                                                         ClonalLineage=ClonalLineage,
                                                         filename=weblogo_query)
 

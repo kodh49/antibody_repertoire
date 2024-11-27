@@ -1,0 +1,161 @@
+2024-11-26T21:47:26.437194-0500 Starting IgBLAST preprocessing.
+2024-11-26T21:47:26.437539-0500 Loading file: data/igblast_results.tsv
+2024-11-26T21:47:26.553024-0500 Normalizing gene calls by removing alleles.
+2024-11-26T21:47:26.571047-0500 Computing CDR3 region lengths.
+2024-11-26T21:47:26.572980-0500 Converting comma-separated gene calls into sets.
+2024-11-26T21:47:26.595648-0500 Preprocessing completed successfully.
+2024-11-26T21:47:26.596012-0500 Starting IgBLAST preprocessing.
+2024-11-26T21:47:26.596198-0500 Loading file: data/igblast_results.tsv
+2024-11-26T21:47:26.693294-0500 Normalizing gene calls by removing alleles.
+2024-11-26T21:47:26.707726-0500 Computing CDR3 region lengths.
+2024-11-26T21:47:26.709268-0500 Converting comma-separated gene calls into sets.
+2024-11-26T21:47:26.734915-0500 Converting DataFrame to dictionary format.
+2024-11-26T21:47:26.769556-0500 Initializing Hamming graph computation...
+2024-11-26T21:47:30.968816-0500 Total sequence pairs to process: 49995000
+2024-11-26T21:49:22.562519-0500 Hamming graph successfully saved to cache.
+2024-11-26T21:49:22.563108-0500 Hamming graph computation completed.
+2024-11-26T21:49:23.524685-0500 Extracting clonal lineages from the Hamming graph.
+2024-11-26T21:49:23.528846-0500 Identified 623 clonal lineages.
+2024-11-26T21:49:23.529267-0500 Computing usage statistics for V genes.
+2024-11-26T21:49:23.529546-0500 Mapping nodes to their respective clonal lineages.
+2024-11-26T21:49:23.535721-0500 Counting V gene usage.
+2024-11-26T21:49:23.540357-0500 Caching usage statistics.
+2024-11-26T21:49:23.540901-0500 Cached usage statistics.
+2024-11-26T21:49:23.541593-0500 Starting to plot usage statistics.
+2024-11-26T21:49:24.147892-0500 Displaying the plot interactively.
+2024-11-26T21:49:27.546073-0500 Plotting completed successfully.
+2024-11-26T21:49:27.546565-0500 Extracting amino acid sequences from the largest clonal lineage.
+2024-11-26T21:59:03.886147-0500 Starting IgBLAST preprocessing.
+2024-11-26T21:59:03.886451-0500 Loading file: data/igblast_results.tsv
+2024-11-26T21:59:04.009066-0500 Normalizing gene calls by removing alleles.
+2024-11-26T21:59:04.026180-0500 Computing CDR3 region lengths.
+2024-11-26T21:59:04.028317-0500 Converting comma-separated gene calls into sets.
+2024-11-26T21:59:04.057183-0500 Preprocessing completed successfully.
+2024-11-26T21:59:04.057599-0500 Starting IgBLAST preprocessing.
+2024-11-26T21:59:04.057928-0500 Loading file: data/igblast_results.tsv
+2024-11-26T21:59:04.157998-0500 Normalizing gene calls by removing alleles.
+2024-11-26T21:59:04.176977-0500 Computing CDR3 region lengths.
+2024-11-26T21:59:04.178954-0500 Converting comma-separated gene calls into sets.
+2024-11-26T21:59:04.199987-0500 Converting DataFrame to dictionary format.
+2024-11-26T21:59:04.228646-0500 Initializing Hamming graph computation...
+2024-11-26T21:59:08.438637-0500 Total sequence pairs to process: 49995000
+2024-11-26T21:59:54.879285-0500 Adding 437782 edges to the graph...
+2024-11-26T21:59:55.173785-0500 Hamming graph successfully saved to cache.
+2024-11-26T21:59:55.174355-0500 Hamming graph computation completed.
+2024-11-26T21:59:55.967969-0500 Extracting clonal lineages from the Hamming graph.
+2024-11-26T21:59:55.971221-0500 Identified 474 clonal lineages.
+2024-11-26T21:59:55.971548-0500 Computing usage statistics for V genes.
+2024-11-26T21:59:55.971877-0500 Mapping nodes to their respective clonal lineages.
+2024-11-26T21:59:55.976327-0500 Counting V gene usage.
+2024-11-26T21:59:55.980332-0500 Caching usage statistics.
+2024-11-26T21:59:55.980783-0500 Cached usage statistics.
+2024-11-26T21:59:55.981106-0500 Starting to plot usage statistics.
+2024-11-26T21:59:56.365234-0500 Displaying the plot interactively.
+2024-11-26T21:59:59.824907-0500 Plotting completed successfully.
+2024-11-26T21:59:59.825349-0500 Extracting amino acid sequences from the largest clonal lineage.
+2024-11-26T22:09:04.366145-0500 Starting IgBLAST preprocessing.
+2024-11-26T22:09:04.366466-0500 Loading file: data/igblast_results.tsv
+2024-11-26T22:09:04.482956-0500 Normalizing gene calls by removing alleles.
+2024-11-26T22:09:04.498924-0500 Computing CDR3 region lengths.
+2024-11-26T22:09:04.500803-0500 Converting comma-separated gene calls into sets.
+2024-11-26T22:09:04.524604-0500 Preprocessing completed successfully.
+2024-11-26T22:09:04.524983-0500 Starting IgBLAST preprocessing.
+2024-11-26T22:09:04.525188-0500 Loading file: data/igblast_results.tsv
+2024-11-26T22:09:04.625277-0500 Normalizing gene calls by removing alleles.
+2024-11-26T22:09:04.640034-0500 Computing CDR3 region lengths.
+2024-11-26T22:09:04.641685-0500 Converting comma-separated gene calls into sets.
+2024-11-26T22:09:04.669920-0500 Converting DataFrame to dictionary format.
+2024-11-26T22:09:04.697527-0500 Initializing Hamming graph computation...
+2024-11-26T22:09:09.355290-0500 Total sequence pairs to process: 49995000
+2024-11-26T22:09:59.119441-0500 Starting IgBLAST preprocessing.
+2024-11-26T22:09:59.119793-0500 Loading file: data/igblast_results.tsv
+2024-11-26T22:09:59.242281-0500 Normalizing gene calls by removing alleles.
+2024-11-26T22:09:59.260566-0500 Computing CDR3 region lengths.
+2024-11-26T22:09:59.262817-0500 Converting comma-separated gene calls into sets.
+2024-11-26T22:09:59.294832-0500 Preprocessing completed successfully.
+2024-11-26T22:09:59.295229-0500 Starting IgBLAST preprocessing.
+2024-11-26T22:09:59.295487-0500 Loading file: data/igblast_results.tsv
+2024-11-26T22:09:59.403455-0500 Normalizing gene calls by removing alleles.
+2024-11-26T22:09:59.422098-0500 Computing CDR3 region lengths.
+2024-11-26T22:09:59.424033-0500 Converting comma-separated gene calls into sets.
+2024-11-26T22:09:59.453562-0500 Converting DataFrame to dictionary format.
+2024-11-26T22:09:59.495222-0500 Initializing Hamming graph computation...
+2024-11-26T22:10:03.560514-0500 Total sequence pairs to process: 49995000
+2024-11-26T22:12:12.718247-0500 Hamming graph successfully saved to cache.
+2024-11-26T22:12:12.719120-0500 Hamming graph computation completed.
+2024-11-26T22:12:13.816246-0500 Extracting clonal lineages from the Hamming graph.
+2024-11-26T22:12:13.819317-0500 Identified 623 clonal lineages.
+2024-11-26T22:12:13.819700-0500 Computing usage statistics for V genes.
+2024-11-26T22:12:13.819964-0500 Mapping nodes to their respective clonal lineages.
+2024-11-26T22:12:13.824698-0500 Counting V gene usage.
+2024-11-26T22:12:13.828955-0500 Caching usage statistics.
+2024-11-26T22:12:13.829433-0500 Cached usage statistics.
+2024-11-26T22:12:13.829715-0500 Starting to plot usage statistics.
+2024-11-26T22:12:14.322470-0500 Displaying the plot interactively.
+2024-11-26T22:12:18.524115-0500 Plotting completed successfully.
+2024-11-26T22:12:18.524492-0500 Extracting amino acid sequences from the largest clonal lineage.
+2024-11-26T23:54:53.461900-0500 Starting IgBLAST preprocessing.
+2024-11-26T23:54:53.462316-0500 Loading file: data/igblast_results.tsv
+2024-11-26T23:54:53.482894-0500 Normalizing gene calls by removing alleles.
+2024-11-26T23:54:53.488477-0500 Computing CDR3 region lengths.
+2024-11-26T23:54:53.490229-0500 Error during preprocessing: DataFrame.drop() got an unexpected keyword argument 'inplace'
+2024-11-26T23:56:24.590270-0500 Starting IgBLAST preprocessing.
+2024-11-26T23:56:24.590626-0500 Loading file: data/igblast_results.tsv
+2024-11-26T23:56:24.601339-0500 Normalizing gene calls by removing alleles.
+2024-11-26T23:56:24.604519-0500 Computing CDR3 region lengths.
+2024-11-26T23:56:24.607530-0500 Converting comma-separated gene calls into sets.
+2024-11-26T23:56:24.618468-0500 Error during preprocessing: Metadata inference failed in `apply`.
+
+You have supplied a custom function and Dask is unable to 
+determine the type of output that that function returns. 
+
+To resolve this please provide a meta= keyword.
+The docstring of the Dask function you ran should have more information.
+
+Original error is below:
+------------------------
+AttributeError("module 'dask.dataframe' has no attribute 'notnull'")
+
+Traceback:
+---------
+  File "/home/dzk5572/miniforge3/envs/erot_env/lib/python3.12/site-packages/dask/dataframe/utils.py", line 193, in raise_on_meta_error
+    yield
+  File "/home/dzk5572/miniforge3/envs/erot_env/lib/python3.12/site-packages/dask_expr/_expr.py", line 4060, in _emulate
+    return func(*_extract_meta(args, True), **_extract_meta(kwargs, True))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dzk5572/miniforge3/envs/erot_env/lib/python3.12/site-packages/dask/utils.py", line 1226, in __call__
+    return getattr(__obj, self.method)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dzk5572/miniforge3/envs/erot_env/lib/python3.12/site-packages/pandas/core/series.py", line 4924, in apply
+    ).apply()
+      ^^^^^^^
+  File "/home/dzk5572/miniforge3/envs/erot_env/lib/python3.12/site-packages/pandas/core/apply.py", line 1427, in apply
+    return self.apply_standard()
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dzk5572/miniforge3/envs/erot_env/lib/python3.12/site-packages/pandas/core/apply.py", line 1507, in apply_standard
+    mapped = obj._map_values(
+             ^^^^^^^^^^^^^^^^
+  File "/home/dzk5572/miniforge3/envs/erot_env/lib/python3.12/site-packages/pandas/core/base.py", line 919, in _map_values
+    return arr.map(mapper, na_action=na_action)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dzk5572/miniforge3/envs/erot_env/lib/python3.12/site-packages/pandas/core/arrays/arrow/array.py", line 1421, in map
+    return super().map(mapper, na_action)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dzk5572/miniforge3/envs/erot_env/lib/python3.12/site-packages/pandas/core/arrays/base.py", line 2322, in map
+    return map_array(self, mapper, na_action=na_action)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dzk5572/miniforge3/envs/erot_env/lib/python3.12/site-packages/pandas/core/algorithms.py", line 1743, in map_array
+    return lib.map_infer(values, mapper, convert=convert)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "lib.pyx", line 2972, in pandas._libs.lib.map_infer
+  File "/home/dzk5572/Projects/genomic_data_analysis/antibody_repertoire/igblast.py", line 57, in <lambda>
+    df[col] = df[col].apply(lambda x: set(str(x).split(",")) if dd.notnull(x) else set())
+                                                                ^^^^^^^^^^
+
+2024-11-26T23:57:24.150521-0500 Starting IgBLAST preprocessing.
+2024-11-26T23:57:24.150841-0500 Loading file: data/igblast_results.tsv
+2024-11-26T23:57:24.160258-0500 Normalizing gene calls by removing alleles.
+2024-11-26T23:57:24.163389-0500 Computing CDR3 region lengths.
+2024-11-26T23:57:24.165051-0500 Converting comma-separated gene calls into sets.
+2024-11-26T23:57:24.173034-0500 Preprocessing completed successfully.
+2024-11-26T23:57:24.173303-0500 Initializing Hamming graph computation...

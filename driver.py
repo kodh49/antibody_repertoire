@@ -14,7 +14,8 @@ def add_arguments(parser):
         type=str,
         choices=["y", "n"],
         help="Select whether to use cached data for the computation.",
-        required=True,
+        required=False,
+        default="y",
     )
     parser.add_argument(
         "--igblast",
@@ -33,13 +34,6 @@ def add_arguments(parser):
         type=str,
         help="Filename of the query for generating weblogo plot.",
         required=False,
-    )
-    parser.add_argument(
-        "--num_threads",
-        type=int,
-        help="Number of threads to be used for the computation.",
-        required=False,
-        default=8,
     )
 
 
@@ -61,6 +55,11 @@ def main(args):
     # report clonal lineage
     ClonalLineage = lineage_analysis.get_clonal_lineages(HammingGraph=HammingGraph)
 
+    LineageStats = lineage_analysis.get_lineages_stats(igblast_result=igblast_result, ClonalLineage=ClonalLineage)
+
+    # Plot the graph of lineage statistics
+    utils.plot_stats(LineageStats)
+
     # report usage stats
     UsageStats = lineage_analysis.get_usage_stats(igblast_result=igblast_result, HammingGraph=HammingGraph, use_cache=use_cache)
     
@@ -72,7 +71,7 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-        description="This script computes classical optimal n-couplings from multiple marginal distributions and a cost tensor.",
+        description="This script performs clonal lineage analysis based on the NCBI-igBlast processed immunoglobin data.",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
     add_arguments(parser)

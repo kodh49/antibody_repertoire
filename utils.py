@@ -1,7 +1,11 @@
 import seaborn as sns
+import pandas as pd
 import matplotlib.pyplot as plt
 from loguru import logger
+import warnings
 import os
+
+warnings.filterwarnings("ignore")
 
 # Configure logger
 logger.add("logs/plots.log", format="{time} {message}", level="DEBUG", rotation="5 MB")
@@ -72,3 +76,40 @@ def plot_usage_stats(usage_data, plot: bool = False, filename: str = None) -> No
         raise
 
     logger.success("Plotting completed successfully.")
+
+
+
+def plot_stats(stats):
+    """
+    Convert the stats dictionary into a DataFrame and create a bar plot.
+
+    Parameters:
+        stats (dict): A dictionary containing clonal lineage statistics.
+
+    Returns:
+        None: Displays a plot and saves it as an image.
+    """
+    # Convert the dictionary to a DataFrame
+    df_stats = pd.DataFrame(list(stats.items()), columns=['Metric', 'Value'])
+
+    # Set up the plot
+    plt.figure(figsize=(12, 6))
+    sns.barplot(data=df_stats, x='Value', y='Metric', palette='viridis', orient='h')
+
+    # Add titles and labels
+    plt.title('Clonal Lineage Statistics', fontsize=16, fontweight='bold', color='darkblue')
+    plt.xlabel('Value', fontsize=14, fontweight='bold')
+    plt.ylabel('Metric', fontsize=14, fontweight='bold')
+
+    # Add values to the bars for better readability
+    for index, value in enumerate(df_stats['Value']):
+        plt.text(value + 0.1, index, str(value), va='center', fontsize=12, color='black')
+
+    # Optimize layout and display
+    plt.tight_layout()
+
+    # Save and show the plot
+    output_dir = "plots"
+    os.makedirs(output_dir, exist_ok=True)
+    plt.savefig(os.path.join(output_dir, "clonal_lineage_stats.png"))
+    plt.show()

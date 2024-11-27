@@ -1,73 +1,137 @@
 import networkx as nx
-import pickle
-import igblast_init as ig
 import pandas as pd
-import utils
+import pickle
 import math
+import os
+from loguru import logger
 
-def get_clonal_lineage(HammingGraph):
-    """
-    Report connected components of the computed Hamming graph as clonal lineages.
-    """
-    ConnectedComponents = list(filter(lambda x: len(x)>1,
-                                  [c for c in sorted(nx.connected_components(HammingGraph), key=len, reverse=True)]
-                                  ))
-    return ConnectedComponents
+# Configure logger
+logger.add("logs/lineage_analysis.log", format="{time} {message}", level="DEBUG", rotation="10 MB")
 
-def get_usage_stats(igblast_result, HammingGraph, verbose):
+def get_clonal_lineages(HammingGraph):
     """
-    Create a usage plot of the computed V genes (x axis = V genes, y axis = the number of clonal lineages formed by each of V genes).
-    For each V gene in the igBlast analysis, compute the number of clonal lineages, i.e. number of connected components that this particular V gene is part of.
+    Identify and report clonal lineages from a Hamming graph.
+
+    Each connected component in the Hamming graph corresponds to a clonal lineage.
+
+    Parameters:
+        HammingGraph (networkx.Graph): The Hamming graph representing relationships between CDR3 sequences.
+
+    Returns:
+        list: A list of connected components, sorted by size in descending order.
     """
-    v_cdr3 = igblast_result.loc[:, ['v_call', 'cdr3']]
-    v_genes = set()
-    for v_gene in v_cdr3['v_call']:
-        v_genes.update(v_gene)
-    
-    # Create a dictionary with keys from all V genes and initial value 0
+    logger.info("Extracting clonal lineages from the Hamming graph.")
+    try:
+        lineages = sorted(nx.connected_components(HammingGraph), key=len, reverse=True)
+        logger.info(f"Identified {len(lineages)} clonal lineages.")
+        return lineages
+    except Exception as e:
+        logger.error(f"Failed to extract clonal lineages: {e}")
+        raise
+
+
+def get_usage_stats(igblast_result, HammingGraph, use_cache=False, cache_path="cache/UsageCounts.pkl"):
+    """
+    Compute usage statistics of V genes based on clonal lineages.
+
+    The usage statistics are the number of clonal lineages that each V gene is part of. Results can be cached for future use.
+
+    Parameters:
+        igblast_result (pd.DataFrame): The processed IgBLAST result containing V gene calls and CDR3 sequences.
+        HammingGraph (networkx.Graph): The Hamming graph used to identify clonal lineages.
+        use_cache (bool, optional): If True, load results from the cache if available. Defaults to False.
+        cache_path (str, optional): Path to the cache file. Defaults to "cache/UsageCounts.pkl".
+
+    Returns:
+        dict: A dictionary where keys are V genes and values are their usage counts.
+    """
+    logger.info("Computing usage statistics for V genes.")
+    if use_cache and os.path.isfile(cache_path):
+        logger.info("Loading usage statistics from cache.")
+        try:
+            with open(cache_path, 'rb') as f:
+                usage_counts = pickle.load(f)
+            logger.info("Loaded usage statistics from cache.")
+            return usage_counts
+        except Exception as e:
+            logger.warning(f"Failed to load cache file: {e}")
+
+    # Map nodes to their clonal lineage
+    logger.info("Mapping nodes to their respective clonal lineages.")
+    try:
+        node_to_component = {}
+        for i, component in enumerate(nx.connected_components(HammingGraph)):
+            for node in component:
+                node_to_component[node] = i
+    except Exception as e:
+        logger.error(f"Failed to map nodes to clonal lineages: {e}")
+        raise
+
+    # Compute usage counts for V genes
+    v_genes = set(gene for genes in igblast_result['v_call'] for gene in genes)
     usage_counts = {v_gene: 0 for v_gene in v_genes}
 
-    for _, sequence in v_cdr3.iterrows():
-        cdr3 = sequence['cdr3']
-        component = nx.node_connected_component(HammingGraph, cdr3)
-        if len(component) != 0: # selected cdr3 is in the clonal lineage
-            for v_gene in sequence['v_call']:
-                usage_counts[v_gene] += 1
+    logger.info("Counting V gene usage.")
+    try:
+        for v_call, cdr3 in zip(igblast_result['v_call'], igblast_result['cdr3']):
+            if cdr3 in node_to_component:
+                for v_gene in v_call:
+                    usage_counts[v_gene] += 1
+    except Exception as e:
+        logger.error(f"Error during V gene usage counting: {e}")
+        raise
 
-    # cache the result for future use
-    pickle.dump(usage_counts, open('cache/usage_counts.pkl', 'wb'))
+    # Cache the results
+    logger.info("Caching usage statistics.")
+    try:
+        os.makedirs(os.path.dirname(cache_path), exist_ok=True)
+        with open(cache_path, 'wb') as f:
+            pickle.dump(usage_counts, f)
+        logger.info("Cached usage statistics.")
+    except Exception as e:
+        logger.warning(f"Failed to cache usage statistics: {e}")
 
     return usage_counts
 
 
-def get_aaseq_from_lcl(igblast_result, clonal_lineage, filename):
+def get_aaseq_from_lcl(igblast_result, ClonalLineage, filename=None):
     """
-    Create a list of amino acid sequences of CDR3s from the largest clonal lineage and save it as a text file with the given filename
+    Extract amino acid sequences of CDR3s from the largest clonal lineage and optionally save them to a file.
+
+    Parameters:
+        igblast_result (pd.DataFrame): The processed IgBLAST result containing CDR3 amino acid sequences.
+        ClonalLineage (list): A list of connected components from the Hamming graph.
+        filename (str, optional): If provided, the sequences will be saved to this file. Defaults to None.
+
+    Returns:
+        str: A string containing amino acid sequences, one per line.
     """
-    lcl = list(clonal_lineage[0]) # largest clonal lineage
-    cdr3_df = pd.DataFrame(lcl, columns=['cdr3']) # table of amino-acid sequences
-    aaseq_df = pd.merge(igblast_result, cdr3_df, how='inner', on='cdr3')
-    aa_seqs = list(map(lambda x: x.replace(' ', '*'), aaseq_df['cdr3_aa'].tolist()))
-    amino_acid_length = math.ceil(sum(map(len, aa_seqs))/len(aa_seqs))
-    for i in range(len(aa_seqs)):
-        amino_acid_seq = aa_seqs[i]
-        if len(amino_acid_seq) < amino_acid_length:
-            aa_seqs[i] = amino_acid_seq + "*"
-    query_string = '\n'.join(aa_seqs)
+    logger.info("Extracting amino acid sequences from the largest clonal lineage.")
+    try:
+        # Extract the largest clonal lineage
+        largest_clonal_lineage = list(ClonalLineage[0])
+        cdr3_df = pd.DataFrame(largest_clonal_lineage, columns=['cdr3'])
 
-    if filename is not None:
-        txt_file = open(f'data/{filename}.txt', 'w')
-        txt_file.write(query_string)
-        txt_file.close()
+        # Merge with igblast_result to get amino acid sequences
+        aaseq_df = pd.merge(igblast_result, cdr3_df, how='inner', on='cdr3')
+        aa_seqs = aaseq_df['cdr3_aa'].str.replace(' ', '*').tolist()
 
-    return query_string
+        # Compute average length and pad sequences
+        avg_length = math.ceil(sum(map(len, aa_seqs)) / len(aa_seqs))
+        aa_seqs = [seq.ljust(avg_length, '*') for seq in aa_seqs]
 
-# load graph object from file
-HammingGraph = pickle.load(open('HammingGraph.pkl', 'rb'))
-ConnectedComponents = get_clonal_lineage(HammingGraph=HammingGraph)
-igblast_result = ig.igblast_preprocess(to_dict=False)
-usage_stats = get_usage_stats(igblast_result=igblast_result, HammingGraph=HammingGraph)
-query_string = get_aaseq_from_lcl(igblast_result=igblast_result, clonal_lineage=ConnectedComponents)
-print(query_string)
+        # Generate the query string
+        query_string = '\n'.join(aa_seqs)
 
-utils.plot_usage_stats(usage_data=usage_stats)
+        # Save to file if a filename is provided
+        if filename:
+            output_dir = "data"
+            os.makedirs(output_dir, exist_ok=True)
+            with open(os.path.join(output_dir, f"{filename}.txt"), 'w') as f:
+                f.write(query_string)
+            logger.info(f"Amino acid sequences saved to {filename}.txt in the data directory.")
+
+        return query_string
+    except Exception as e:
+        logger.error(f"Failed to extract amino acid sequences: {e}")
+        raise

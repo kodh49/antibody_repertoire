@@ -4,7 +4,7 @@ import pandas as pd
 
 def igblast_preprocess(to_dict: False):
     df = pd.read_csv('data/igblast_results.tsv', sep='\t', header=0)
-    assorted_columns = ['v_call', 'd_call', 'j_call', 'cdr3', 'cdr3_start', 'cdr3_end']
+    assorted_columns = ['v_call', 'd_call', 'j_call', 'cdr3', 'cdr3_aa', 'cdr3_start', 'cdr3_end']
     df.drop(df.columns.difference(assorted_columns), axis=1, inplace=True)
 
     # normalize matching gene information by ignoring alleles 

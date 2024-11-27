@@ -38,7 +38,7 @@ def hamming_distance(str1, str2):
     """
     return sum(symb1 != symb2 for symb1, symb2 in zip(str1, str2))
 
-igblast_result = ig.igblast_preprocess()
+igblast_result = ig.igblast_preprocess(to_dict=True)
 HammingGraph = init(igblast_result=igblast_result)
 
 # save graph object to file
@@ -46,5 +46,3 @@ pickle.dump(HammingGraph, open('HammingGraph.pkl', 'wb'))
 
 # load graph object from file
 HammingGraph = pickle.load(open('HammingGraph.pkl', 'rb'))
-
-print(HammingGraph)

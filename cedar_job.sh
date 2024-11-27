@@ -1,12 +1,12 @@
 #!/bin/bash
-#SBATCH --mem-per-cpu=2.0G
-#SBATCH --time=00:08:00
+#SBATCH --mem-per-cpu=2048M
+#SBATCH --time=00:38:00
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=48
 
 srun --ntasks $SLURM_NNODES --tasks-per-node=1 bash << EOF
 
-module load python/3.10
+module load python/3.12
 
 virtualenv --no-download $SLURM_TMPDIR/test_env
 source $SLURM_TMPDIR/env/bin/activate

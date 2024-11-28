@@ -63,6 +63,9 @@ def main(args):
     # report usage stats
     UsageStats = lineage_analysis.get_usage_stats(igblast_result=igblast_result, HammingGraph=HammingGraph, use_cache=use_cache)
     
+    sorted_dict = {key: value for key, value in sorted(UsageStats.items(), key=lambda item: item[1], reverse=True)}
+    print(sorted_dict)
+
     # Plot the graph of usage statistics
     utils.plot_usage_stats(usage_data=UsageStats, plot=True, filename=usage_plot)
     

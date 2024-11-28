@@ -28,7 +28,7 @@ CORES=48
 cd ncbi-igblast-1.22.0
 
 # run ncbi-igblash-1.22.0
-bin/igblastn -germline_db_V $DB_DIR/my_seq_V -germline_db_D $DB_DIR/my_seq_D -germline_db_J $DB_DIR/my_seq_J -organism human -domain_system imgt -query ../$QUERY -outfmt 19 -out ../$OUTPUT -auxiliary_data $AUXILIARY
+bin/igblastn -germline_db_V $DB_DIR/my_seq_V -germline_db_D $DB_DIR/my_seq_D -germline_db_J $DB_DIR/my_seq_J -organism human -domain_system imgt -query ../$QUERY -outfmt 19 -out ../$OUTPUT -auxiliary_data $AUXILIARY -num_threads $CORES
 
 cd ..
 
